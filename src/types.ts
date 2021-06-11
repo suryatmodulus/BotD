@@ -1,5 +1,5 @@
 type SimpleSourceResult = string | number | boolean
-type SourceResult = SimpleSourceResult | SimpleSourceResult[]
+type SourceResult = SimpleSourceResult | SimpleSourceResult[] | null
 type SourceFunction = () => SourceResult | Promise<SourceResult>
 type SourceDict = Record<string, SourceFunction>
 export type SourceResultDict = Record<string, Source>

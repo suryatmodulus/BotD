@@ -27,6 +27,7 @@ import getFrequency from './sources/frequency'
 import getWindowProperties from './sources/window'
 import getDocumentProperties from './sources/document'
 import getNavigatorProperties from './sources/navigator'
+import getAccelerometer from "./sources/accelerometer";
 
 export const enum SignalName {
   UserAgent = 's1',
@@ -58,6 +59,7 @@ export const enum SignalName {
   DocumentProperties = 's27',
   NavigatorProperties = 's28',
   Tag = 's29',
+  Accelerometer = 's30',
 }
 
 export default async function collect(): Promise<SourceResultDict> {
@@ -90,5 +92,6 @@ export default async function collect(): Promise<SourceResultDict> {
     [SignalName.WindowProperties]: getWindowProperties,
     [SignalName.DocumentProperties]: getDocumentProperties,
     [SignalName.NavigatorProperties]: getNavigatorProperties,
+    [SignalName.Accelerometer]: getAccelerometer,
   })
 }
