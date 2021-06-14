@@ -1,4 +1,4 @@
-# Botd-agent API
+# Botd API
 
 ## `Botd.load`
 
