@@ -41,8 +41,10 @@ The error message has the following structure:
 
 | Error code            | HTTP Status Code          | Description                                         |
 | --------------------- | ------------------------- | --------------------------------------------------- |
-| tokenRequired         | 401 Unauthorized          | Token specified incorrectly                         |
-| tokenInvalid          | 401 Unauthorized          | Token not found                                     |
+| publicKeyRequired     | 401 Unauthorized          | Public key specified incorrectly                    |
+| publicKeyInvalid      | 401 Unauthorized          | Public key not found                                |
+| secretRequired        | 401 Unauthorized          | Secret specified incorrectly                        |
+| secretInvalid         | 401 Unauthorized          | Secret not found                                    |
 | requestCannotBeParsed | 422 Unprocessable Entity  | Error during body parsing                           |
 | badRequest            | 400 Bad request           | Error in the request, details in message            |
 | tooManyRequests       | 429 Too many request      | [Request limit](/README.md#authentication) exceeded |
