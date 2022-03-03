@@ -12,6 +12,7 @@ import {
   DetectBody,
   Modes,
   ObfuscationModes,
+  Source,
 } from './types'
 
 function setCookie(name: string, value: string): void {
@@ -60,9 +61,9 @@ export default class BotDetector implements BotDetectorInterface {
   /**
    * @inheritdoc
    */
-  async collect(): Promise<ComponentDict> {
+  async collect(sources: Record<string, Source>): Promise<ComponentDict> {
     const timestamp = Date.now()
-    this.components = await collect()
+    this.components = await collect(sources)
     this.performance = Date.now() - timestamp
     return this.components
   }

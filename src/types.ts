@@ -118,7 +118,7 @@ export interface BotDetectorInterface {
    *
    * @returns {Promise<ComponentDict>} A promise to the collected components.
    */
-  collect(): Promise<ComponentDict>
+  collect(sources: Record<string, Source>): Promise<ComponentDict>
 }
 
 /**
