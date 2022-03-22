@@ -43,51 +43,6 @@ import isHiDPI from './sources/dpi'
 import isDarkTheme from './sources/darkTheme'
 import getSABByteLength from './sources/sab'
 
-export const sources = {
-  userAgent: getUserAgent, // s1
-  userAgentData: hasUserAgentData, // s2
-  appVersion: getAppVersion, // s3
-  rtt: getRTT, // s4
-  windowOuterSize: getWindowOuterSize, // s5
-  notificationPermissions: arePermissionsInconsistent, // s6
-  webgl: getWebGL, // s7
-  screen: getScreen, // s8
-  deviceMemory: getDeviceMemory, // s9
-  endian: isBigEndian, // s10
-  hardwareConcurrency: getHardwareConcurrency, // s11
-  installTrigger: getInstallTrigger, // s12
-  webdriver: getWebDriver, // s13
-  evalLength: getEvalLength, // s14
-  pluginsLength: getPluginsLength, // s15
-  pluginsConsistence: arePluginsConsistent, // s16
-  errorTrace: getErrorTrace, // s17
-  errorFF: getErrorFF, // s18
-  oscpu: getOSCPU, // s19
-  platform: getPlatform, // s20
-  productSub: getProductSub, // s21
-  vendor: getVendor, // s22
-  frequency: getFrequency, // s23
-  windowProperties: getWindowProperties, // s24
-  documentProperties: getDocumentProperties, // s25
-  navigatorProperties: getNavigatorProperties, // s26
-  touch: getTouchPoints, // s27
-  sourceBuffer: getSourceBufferType, // s28
-  documentElementKeys: getDocumentElementKeys, // s29
-  windowClose: getWindowClose, // s30
-  windowExternal: getWindowExternal, // s31
-  languages: getLanguages, // s32
-  mimeTypesLength: getMimeTypesLength, // s33
-  mimeTypesConsistence: areMimeTypesConsistent, // s34
-  accelerometerPermission: requiredAccelerometerPermission, // s35
-  clientTimestamp: getTimestamp, // s36
-  backdropFilter: getBackdropFilter, // s37
-  astcProfiles: getASTCProfiles, // s38
-  hairlines: getHairlines, // s39
-  dpi: isHiDPI, // s40
-  darkTheme: isDarkTheme, // s41
-  byteLength: getSABByteLength, // s42
-}
-
 /**
  * Builds an instance of the BotDetector. It's recommended to call it as early as possible, ideally during application startup.
  *
@@ -96,8 +51,83 @@ export const sources = {
  */
 export async function load(options: InitOptions): Promise<BotDetectorInterface> {
   const detector = new BotDetector(options)
-  await detector.collect(sources)
+  await detector.collect({
+    userAgent: getUserAgent, // s1
+    userAgentData: hasUserAgentData, // s2
+    appVersion: getAppVersion, // s3
+    rtt: getRTT, // s4
+    windowOuterSize: getWindowOuterSize, // s5
+    notificationPermissions: arePermissionsInconsistent, // s6
+    webgl: getWebGL, // s7
+    screen: getScreen, // s8
+    deviceMemory: getDeviceMemory, // s9
+    endian: isBigEndian, // s10
+    hardwareConcurrency: getHardwareConcurrency, // s11
+    installTrigger: getInstallTrigger, // s12
+    webdriver: getWebDriver, // s13
+    evalLength: getEvalLength, // s14
+    pluginsLength: getPluginsLength, // s15
+    pluginsConsistence: arePluginsConsistent, // s16
+    errorTrace: getErrorTrace, // s17
+    errorFF: getErrorFF, // s18
+    oscpu: getOSCPU, // s19
+    platform: getPlatform, // s20
+    productSub: getProductSub, // s21
+    vendor: getVendor, // s22
+    frequency: getFrequency, // s23
+    windowProperties: getWindowProperties, // s24
+    documentProperties: getDocumentProperties, // s25
+    navigatorProperties: getNavigatorProperties, // s26
+    touch: getTouchPoints, // s27
+    sourceBuffer: getSourceBufferType, // s28
+    documentElementKeys: getDocumentElementKeys, // s29
+    windowClose: getWindowClose, // s30
+    windowExternal: getWindowExternal, // s31
+    languages: getLanguages, // s32
+    mimeTypesLength: getMimeTypesLength, // s33
+    mimeTypesConsistence: areMimeTypesConsistent, // s34
+    accelerometerPermission: requiredAccelerometerPermission, // s35
+    clientTimestamp: getTimestamp, // s36
+    backdropFilter: getBackdropFilter, // s37
+    astcProfiles: getASTCProfiles, // s38
+    hairlines: getHairlines, // s39
+    dpi: isHiDPI, // s40
+    darkTheme: isDarkTheme, // s41
+    byteLength: getSABByteLength, // s42
+  })
   return detector
 }
 
 export default { load }
+
+// The exports below are for private usage. They may change unexpectedly. Use them at your own risk.
+export const sources = {
+  userAgent: getUserAgent, // s1
+  appVersion: getAppVersion, // s3
+  rtt: getRTT, // s4
+  windowOuterSize: getWindowOuterSize, // s5
+  notificationPermissions: arePermissionsInconsistent, // s6
+  endian: isBigEndian, // s10
+  installTrigger: getInstallTrigger, // s12
+  pluginsConsistence: arePluginsConsistent, // s16
+  errorTrace: getErrorTrace, // s17
+  errorFF: getErrorFF, // s18
+  productSub: getProductSub, // s21
+  frequency: getFrequency, // s23
+  windowProperties: getWindowProperties, // s24
+  documentProperties: getDocumentProperties, // s25
+  navigatorProperties: getNavigatorProperties, // s26
+  sourceBuffer: getSourceBufferType, // s28
+  documentElementKeys: getDocumentElementKeys, // s29
+  windowClose: getWindowClose, // s30
+  windowExternal: getWindowExternal, // s31
+  languages: getLanguages, // s32
+  mimeTypesLength: getMimeTypesLength, // s33
+  mimeTypesConsistence: areMimeTypesConsistent, // s34
+  accelerometerPermission: requiredAccelerometerPermission, // s35
+  backdropFilter: getBackdropFilter, // s37
+  astcProfiles: getASTCProfiles, // s38
+  hairlines: getHairlines, // s39
+  dpi: isHiDPI, // s40
+  byteLength: getSABByteLength, // s42
+}
