@@ -54,6 +54,8 @@ export function getBrowserKind(): BrowserKind {
   const userAgent = navigator.userAgent?.toLowerCase()
   if (strIncludes(userAgent, 'wechat')) {
     return BrowserKind.WeChat
+  } else if (strIncludes(userAgent, 'edg/')) {
+    return BrowserKind.Edge
   } else if (strIncludes(userAgent, 'firefox')) {
     return BrowserKind.Firefox
   } else if (strIncludes(userAgent, 'opera') || strIncludes(userAgent, 'opr')) {
